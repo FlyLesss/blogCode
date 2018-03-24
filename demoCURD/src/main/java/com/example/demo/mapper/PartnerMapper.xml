@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.PartnerMapper">
+	<resultMap id="userResultMap" type="com.example.demo.bean.Partner">
+		<result column="PARTNER_ID" property="partnerId"></result>
+		<result column="USER_TYPE" property="userType"></result>
+		<result column="LOGIN_ACCOUNT" property="loginAccount"></result>
+		<result column="PASSWORD" property="password"></result>
+		<result column="NAME" property="name"></result>
+		<result column="MOBILE" property="mobile"></result>
+		<result column="EMAIL" property="email"></result>
+		<result column="IDCARD" property="idcard"></result>
+		<result column="COMPANY_NAME" property="companyName"></result>
+		<result column="COMPANY_ADDRESS" property="companyAddress"></result>
+	</resultMap>
+	<select id="findPartner" resultMap="userResultMap"
+		parameterType="java.lang.String">
+		select * from ec_partner
+	</select>
+	<select id="findPartnerById" resultMap="userResultMap"
+		parameterType="java.lang.String">
+		select * from ec_partner
+		where PARTNER_ID=#{partnerId}
+	</select>
+	<insert id="insertPartner" parameterType="com.example.demo.bean.Partner">
+		insert into ec_partner(
+		PARTNER_ID,
+		USER_TYPE,
+		LOGIN_ACCOUNT,
+		PASSWORD,
+		NAME,
+		MOBILE,
+		EMAIL,
+		IDCARD,
+		COMPANY_NAME,
+		COMPANY_ADDRESS
+		)values(
+		#{partnerId},
+		#{userType},
+		#{loginAccount},
+		#{password},
+		#{name},
+		#{mobile},
+		#{email},
+		#{idcard},
+		#{companyName},
+		#{companyAddress}
+		)
+	</insert>
+	<delete id="deletePartnerById" parameterType="java.lang.String">
+		delete from ec_partner
+		where PARTNER_ID=#{partnerId}
+	</delete>
+</mapper>
