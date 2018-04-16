@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: test-consumer   #消费者的程序名称
+server:
+  port: 2222              #本程序的端口
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/   #注册中心的地址
